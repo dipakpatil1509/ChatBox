@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+  body{
+    height:100%;
+    overflow:hidden;
+    position:relative;
+  }
+  .loader {
+    position: absolute;
+    left: 50%;
+    top: 35%;
+    display: block;
+    border: 16px solid #121212; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+    z-index:999999;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+#button6,#button7{
+    margin-left:10px;
+    color:black;
+  	background-size: 100% 200%;
+  	background-image: linear-gradient(to bottom, rgba(255,255,255,0) 50%, #00bfa5 50%);
+  	-webkit-transition: background-position 0.15s;
+  	-moz-transition: background-position 0.15s;
+  	transition: background-position 0.15s;
+  	transition-delay: 0.15s;
+  	transition-timing-function: linear;
+    margin-right:5px;
+}
+
+#button6:hover{
+	background-position: 0 -100%;
+	color:white;
+}
+#button7:hover{
+	background-position: 0 -100%;
+	color:white;
+}
+#homeimage{
+  width:100%;
+  border-radius:15px;
+}
+.jumbotron h5{
+  color:black;
+  width:100%;
+}
+.jumbotron{
+  margin-top:20px;
+}
+#con10{
+	width:100%;
+	height: 50px;
+	margin-top:5px;
+	background: #010b1d;
+	background-repeat: repeat-x;
+	background-size: 100% 100%;
+  position:relative;
+	}
+  #con10 h5{
+    color:white;
+    width:100%;
+    position:absolute;
+    bottom:10px;
+    left:10px;
+  }
+  @media (max-width: 575.98px) {
+    body{
+      overflow-y:scroll;
+    }
+  }
+</style>
+    {% if user.is_authenticated %}
+        <h1>Welcome Back To WhatsBook!!!</h1>
+        <h4>Continue to Chat...</h4>
+        <a href="{% url 'groups:group_list' %}" class="nav-item ">
+            <button id="button6" type="button" class="btn btn-default navbar-btn btn-lg my-2 my-sm-0">
+                Continue...</button>
+        </a>
+
+    {% else %}
+        <h1>Welcome To WhatsBook!!!</h1>
+        <h4>Log in to continue!!</h4>
+        <a href="{% url 'accounts:login' %}" class="nav-item ">
+          <button id="button7" type="button" class="btn btn-default navbar-btn btn-lg my-2 my-sm-0">
+            Log In</button>
+        </a>
+    {% endif %}
+    <div class="jumbotron">
+      <div class="row">
+        <div class="col-xl-6 col-xs-12">
+          <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+             ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+             ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+             Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h5>
+        </div>
+        <div class="col-xl-6 col-xs-12">
+          <img id="homeimage" src="https://innotechllc.us/images/slides/mobile-web-design.jpg" alt="No internet">
+        </div>
+      </div>
+    </div>
+{% endblock %}
+{% block footer %}
+  <div class="jumbotron" id="con10">
+      <h5><em>-A Project By <strong>Dipak Patil</strong></em></h5>
+  </div>
+{% endblock %}
+{% block scriptcontent %}
+<script>
+  $(document).ready(function(){
+    $(".loader").fadeOut(500);
+  })
+  if (document.body.classList.contains("dark-mode")){
+    $("#button6").css('color','white');
+    $("#button7").css('color','white');
+  }
+  else{
+  $("#button6").css('color','black');
+    $("#button7").css('color','black');
+  }
+</script>
+
+{% endblock %}

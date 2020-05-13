@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block links %}
+<link src="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+{% endblock %}
+{% block content %}
+<style>
+.header{
+opacity:0.2;
+  z-index:99999;
+}
+.jumbotron{
+  /* text-align:center; */
+  width:50%;
+  margin:auto;
+  opacity:1;
+  color: #00000eeb;
+  box-shadow: 0px 22px 57px 0px rgba(34,41,72,0.5);
+}
+#button4,#button1,#button2{
+  background-image:none;
+}
+#button4:hover,#button1:hover,#button2:hover{
+  color:black;
+}
+.jumbotron {
+  position:relative;
+    z-index:100000;
+}
+#button12{
+  position:absolute;
+  top:0;
+  right:0;
+  text-align:center;
+  border:none;
+}
+.fa3{
+  color:black;
+  fill:black;
+  border:none;
+  font-size:20px;
+}
+@media (max-width: 575.98px) {
+  body{
+    overflow-y:scroll;
+  }
+  .jumbotron{
+    width:100%;
+  }
+}
+</style>
+
+<div class="jumbotron">
+    <a href="{% url 'accounts:home' %}"><button type="button" id="button12" class="btn btn-default"><i class="fa fa-times-circle fa3"></i></button></a>
+    <h1 align="center">Log In Time!!</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit" id="button9" class="btn btn-success" value="Log In">
+    </form>
+    <p></p>
+
+    <a href="{% url 'accounts:password_reset' %}"><button type="button" id="button11" class="btn btn-danger">Forgot Ur Password?</button></a>
+
+    <p></p>
+    <h4 align="center">Don't have account sign up here!!!
+    <a href="{% url 'accounts:signup' %}"><button type="button" id="button10" class="btn btn-success">Sign Up</button></a>
+    </h4>
+</div>
+
+{% endblock %}
+
+{% block scriptcontent %}
+<script>
+  $("#button4").attr('disabled', true)
+  $("#button1").attr('disabled', true)
+  $("#button2").attr('disabled', true)
+</script>
+
+{% endblock %}

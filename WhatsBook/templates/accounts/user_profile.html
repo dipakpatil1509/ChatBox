@@ -1,0 +1,100 @@
+{% extends 'base.html'%}
+{% block content %}
+<style>
+  .fa2{
+    font-size:20px;
+    padding:0 auto;
+  }
+  .jumbotron{
+    color:white;
+    background:#141414;
+    border-radius:25px;
+  }
+.form-inline{
+  margin-top:30px;
+}
+label{
+  font-weight:bolder;
+}
+#name{
+  margin-left:20px;
+  width:80%;
+}
+#name:disabled{
+  background:white;
+}
+#first{
+  margin-left:14px;
+  width:80%;
+}
+#first:disabled{
+  background:white;
+}
+
+#last{
+  margin-left:15px;
+  width:80%;
+}
+#last:disabled{
+  background:white;
+}
+
+#email{
+  margin-left:52px;
+  width:80%;
+}
+#email:disabled{
+  background:white;
+}
+#button12{
+  margin-top:50px;
+  text-align:center;
+  font-weight:bolder;
+}
+</style>
+<div class="jumbotron" align="center">
+
+    <p></p>
+    <h5 align="left">User Details:</h5>
+    <p></p>
+    <form class="form-group">
+      <div class="form-inline">
+        <label for="name">Username :  </label>
+        <input type="text" class="form-control" id="name" value={{user_details.username}}>
+      </div>
+      <div class="form-inline">
+        <label for="first">First Name :  </label>
+        <input type="text" class="form-control" id="first" value={{user_details.first_name}}>
+      </div>
+      <div class="form-inline">
+        <label for="last">Last Name :  </label>
+        <input type="text" class="form-control" id="last" value={{user_details.last_name}}>
+      </div>
+      <div class="form-inline">
+        <label for="email">Email :  </label>
+        <input type="email" class="form-control" id="email" value={{user_details.email}}>
+      </div>
+
+
+      <div class="row">
+        <div class="col-xl-6 col-xs-12" align="left">
+          <button type="button" id="button12" onclick="window.history.back()" class="btn btn-warning"><i class="fa fa-arrow-left fa2"></i>  Back</button>
+        </div>
+      </div>
+    </form>
+
+
+</div>
+
+
+{% endblock %}
+{% block scriptcontent %}
+<script>
+  $("#name").attr('disabled', true)
+  $("#first").attr('disabled', true)
+  $("#last").attr('disabled', true)
+  $("#email").attr('disabled', true)
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+  .jumbotron{
+    border-radius:15px;
+      color:#353535;
+    box-shadow:0px 22px 57px 0px  rgba(34,41,72,0.2);
+  }
+  table{
+    margin-top:20px;
+    width:100%;
+    text-align:center;
+    border-radius:15px;
+    overflow:hidden;
+  }
+
+  th{
+    text-align:center;
+    border:black 2px solid;
+  }
+  td{
+    text-align:left;
+    padding-left:30px;
+    border:black 2px solid;
+  }
+
+tr:hover{
+  box-shadow:5px 5px 20px 5px  rgba(0,0,0,0.8);
+}
+#searchin{
+  border-radius:15px;
+  width:90%;
+  display:inline-flex;
+  height:40px;
+
+}
+#searchin:focus{
+  border:none;
+  box-shadow:none;
+}
+form{
+  display:flex;
+  width:100%;
+  position:relative;
+  z-index:1500;
+
+}
+#button13{
+  height:40px;
+  width:10%;
+  border-radius:15px;
+  margin-right:10px;
+}
+#button12{
+  margin-top:50px;
+  text-align:center;
+  font-weight:bolder;
+}
+.fa2{
+  font-size:20px;
+  padding:0 auto;
+}
+</style>
+<div class="container">
+  <div class="jumbotron">
+    <h1 align="center">User List</h1>
+
+    <form action="{% url 'contacts:search_list' %}" method="POST">
+            {% csrf_token %}
+
+          <input id="searchin" class="form-control" type="text" name="search" placeholder="Search">
+          <button type="submit" name="button" id="button13"  class="btn btn-info navbar-btn btn-sm my-2 my-sm-0">Search</button>
+
+    </form>
+    {% for message in messages %}
+      <h4>{{message}}</h4>
+    {% endfor %}
+      <table align="center" class="table table-hover table-dark">
+        <thread>
+          <th>Names</th>
+          <th>Username</th>
+          <th>Email</th>
+        </thread>
+        {% for names in search_lists %}
+          {% if names != user%}
+            <tr>
+                  <td>{{names.first_name}} {{names.last_name}}</td>
+                  <td>{{names}}</td>
+                  <td>{{names.email}}</td>
+                  {% if show == 'True' %}
+                    {% if names in group_details.members.all %}
+                      <td>
+                        <form action="{% url 'groups:remove_member' %}" method="POST">
+                              {% csrf_token %}
+                              <input type="hidden" name="group_pk" value={{group_details.pk}}>
+                              <input type="hidden" name="users_name" value={{names.pk}}>
+                              <button id="button14" type="submit" class="btn btn-danger navbar-btn btn-sm my-2 my-sm-0">Remove</button>
+                          </form>
+
+                      </td>
+                    {% else %}
+                      <td><form action="{% url 'groups:add_member'  %}" method="POST">
+                              {% csrf_token %}
+                              <input type="hidden" name="group_pk" value={{group_details.pk}}>
+                              <input type="hidden" name="users_name" value={{names.pk}}>
+                              <button id="button14" type="submit" class="btn btn-primary navbar-btn btn-sm my-2 my-sm-0">
+                                Add</button>
+                          </form>
+                      </td>
+                    {% endif %}
+                  {% endif %}
+            </tr>
+          {%endif %}
+        {% endfor %}
+      </table>
+      <p></p>
+
+          <button type="button" id="button12" onclick="window.history.back()" class="btn btn-success"><i class="fa fa-arrow-left fa2"></i>  Back</button>
+
+  </div>
+</div>
+
+{% endblock %}
+{% block scriptcontent %}
+<script>
+  $(document).ready(function(){
+  $("#searchin").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $(".tabletr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+{% endblock %}

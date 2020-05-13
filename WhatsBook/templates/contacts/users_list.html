@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% block content %}
+<style>
+  .jumbotron{
+    border-radius:15px;
+    box-shadow:0px 22px 57px 0px  rgba(34,41,72,0.2);
+    position:relative;
+      color:#353535;
+  }
+  .jumbotron h1{
+    color:#353535;
+
+  }
+  table{
+
+    width:100%;
+    text-align:center;
+    border-radius:15px;
+    overflow:hidden;
+  }
+.table16{
+  margin-top:20px;
+  max-height:500px;
+  overflow-y:scroll;
+}
+.table16::-webkit-scrollbar{
+  display:none;
+}
+  th{
+    text-align:center;
+    border:black 2px solid;
+  }
+  td{
+    text-align:left;
+    padding-left:30px;
+    border:black 2px solid;
+  }
+
+tr:hover{
+  box-shadow:5px 5px 20px 5px  rgba(0,0,0,0.8);
+}
+#searchin{
+  border-radius:15px;
+  width:90%;
+  flex-grow:2;
+  display:inline-flex;
+  height:40px;
+}
+#searchin:focus{
+  border:none;
+  box-shadow:none;
+}
+form{
+  display:flex;
+  width:100%;
+  position:relative;
+}
+#button13{
+  height:40px;
+  width:10%;
+  border-radius:15px;
+  margin-right:10px;
+}
+.fa3{
+  font-size:20px;
+}
+#button18{
+  position:absolute;
+  top:0;
+  left:0;
+}
+#button19{
+  position:absolute;
+  bottom:0;
+  left:0;
+}
+@media (max-width: 575.98px) {
+  .table16{
+    overflow-x:scroll;
+  }
+  .jumbotron{
+    width:100%;
+  }
+}
+</style>
+<div class="container">
+  <div class="jumbotron">
+    <h1 align="center">User List</h1>
+
+    <form action="{% url 'contacts:search_list' %}" method="POST">
+      {% csrf_token %}
+          <input type="hidden" name="groups_name" value={{group_details.pk}}>
+          <input id="searchin" class="form-control" type="text" name="search" placeholder="Search">
+          <input type="submit" value="Search" name="button" id="button13"  class="btn btn-info navbar-btn btn-sm">
+
+    </form>
+    {% for message in messages %}
+      <h4>{{message}}</h4>
+    {% endfor %}
+    <div class="table16">
+      <table align="center" id="table15" class="table table-hover table-dark">
+
+          <thead>
+            <th>Names</th>
+            <th>Username</th>
+            <th>Email</th>
+          </thead>
+          {% for names in users_names %}
+            {% if names != user%}
+              <tr class="tabletr">
+                    <td>{{names.first_name}} {{names.last_name}}</td>
+                    <td>{{names}}</td>
+                    <td>{{names.email}}</td>
+                    {% if show == 'True' %}
+                      {% if names in group_details.members.all %}
+                        <td>
+                          <form action="{% url 'groups:remove_member' %}" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="group_pk" value={{group_details.pk}}>
+                                <input type="hidden" name="users_name" value={{names.pk}}>
+                                <button id="button14" type="submit" class="btn btn-danger navbar-btn btn-sm my-2 my-sm-0">Remove</button>
+                            </form>
+
+                        </td>
+                      {% else %}
+                        <td><form action="{% url 'groups:add_member'  %}" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="group_pk" value={{group_details.pk}}>
+                                <input type="hidden" name="users_name" value={{names.pk}}>
+                                <button id="button14" type="submit" class="btn btn-primary navbar-btn btn-sm my-2 my-sm-0">
+                                  Add</button>
+                            </form>
+                        </td>
+                      {% endif %}
+                    {% endif %}
+              </tr>
+            {%endif %}
+          {% endfor %}
+      </table>
+      </div>
+     <a href="{% url 'groups:group_list' %}">
+          <button id="button18" type="button" class="btn btn-success navbar-btn btn-sm my-2 my-sm-0">
+          <i class="fa fa-home fa3"></i> </button>
+      </a>
+      {% if show == 'True' %}
+          <a href="{% url 'groups:group_details' pk=group_details.pk %}">
+               <button id="button19" type="button" class="btn btn-secondary navbar-btn btn-sm my-2 my-sm-0">
+               <i class="fa fa-arrow-left fa3"></i> </button>
+           </a>
+      {% endif %}
+  </div>
+</div>
+
+
+
+
+{% endblock %}
+{% block scriptcontent %}
+<script>
+  $(document).ready(function(){
+  $("#searchin").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $(".tabletr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+{% endblock %}

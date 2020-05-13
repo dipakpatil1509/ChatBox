@@ -1,0 +1,578 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block table %}
+
+<style>
+  html {
+    height: 100%;
+  }
+
+  body {
+    height: 100%;
+    overflow:hidden;
+    width:100%;
+  }
+
+
+#con20, #con21{
+  height:670px;
+  border:black 2px solid;
+  border-radius:5px;
+  position:relative;
+
+  overflow:hidden;
+  width:100%;
+}
+
+#con21 h2{
+
+  font-weight:700;
+  margin-top:5px;
+  color:white;
+}
+#con20{
+  overflow:auto;
+  overflow-x: hidden;
+  margin-left:1%;
+}
+#con20::-webkit-scrollbar {
+  display: none;
+}
+#con21{
+  margin-left:-10px;
+}
+
+.table-con{
+    margin-top:130px;
+    margin-left:10px;
+  /* border:white 1px solid; */
+  /* border-radius:15px; */
+  border:none;
+  min-height:100%;
+}
+#td1{
+  font-size:25px;
+  font-weight:600;
+  color:white;
+}
+#img1{
+  width:60px;
+  height:60px;
+  border-radius:50%;
+}
+table{
+  margin-top:15px;
+  width:100%;
+  border:white 1px solid;
+  border-radius:15px;
+  overflow:hidden;
+  position:relative;
+  z-index:10000000;
+}
+thead{
+  width:100%;
+  height:70px;
+  text-align:center;
+}
+
+#h21{
+  font-weight:700;
+  color:white;
+  top:0;
+  padding-bottom:10px;
+  position:absolute;
+}
+
+td{
+  cursor:pointer;
+  padding-top:10px;
+  border: 2px white solid;
+  border-radius:15px;
+}
+.fa3{
+  font-size:20px;
+  color:white;
+  margin:0 auto;
+}
+#thead1{
+  display: table-row;
+}
+#button17{
+  opacity:1;
+  left:20px;
+  position:absolute;
+  display:table-cell;
+}
+#button18{
+  opacity:1;
+  padding-top:10px;
+  position:absolute;
+  right:80px;
+display:table-cell;
+}
+#button19{
+  position:absolute;
+  right:10px;
+display:table-cell;
+  opacity:1;
+  padding-top:10px;
+}
+
+#searchin{
+  border-radius:15px;
+  width:100%;
+  display:inline-flex;
+  height:40px;
+  border-right:none;
+  position:relative;
+  overflow:hidden;
+}
+#searchin:focus{
+  border:none;
+  box-shadow:none;
+}
+
+form{
+  display:flex;
+  width:100%;
+  position:relative;
+}
+#form12{
+  width:175%;
+}
+#button13, #button14{
+  display:inline-flex;
+  height:40px;
+  border-radius:15px;
+  width:10%;
+  text-align:center;
+}
+
+.fa4{
+  font-size:25px;
+  position:relative;
+}
+
+#th12{
+  position:relative;
+}
+#th12 img{
+  position:absolute;
+  left:5px;
+  bottom:6px;
+  top:6px;
+}
+#th12 h2{
+  position:relative;
+  top:0;
+  display: table;
+  left:60px;
+}
+#th12 form{
+  position:absolute;
+  right:0px;
+  top:0px;
+}
+#button28{
+  position:absolute;
+  right:80px;
+  top:15px;
+}
+#button29{
+  position:absolute;
+  right:150px;
+  top:15px;
+}
+#button32{
+  position:absolute;
+  right:220px;
+  top:15px;
+}
+#button35{
+  position:absolute;
+  right:320px;
+  top:15px;
+}
+#button36{
+  position:absolute;
+  right:220px;
+  top:15px;
+}
+#Menu{
+  position:absolute;
+  right:6px;
+  top:15px;
+}
+#td1 a{
+  color:#fff;
+  text-decoration:none;
+}
+#td1 a:visited{
+  color:#fff;
+  text-decoration:none;
+}
+#con55{
+  width:100%;
+  max-height:100px;
+  position:absolute;
+  bottom:5px;
+  left:0;
+  z-index:1001;
+}
+
+#form20{
+  width:100%;
+  margin-top:5px;
+}
+textarea{
+  width:90%;
+  max-height:3em;
+  font-size:1em;
+  overflow-y:scorll;
+  overflow-x:hidden;
+}
+textarea::-webkit-scrollbar{
+  display:none;
+}
+#button20{
+  width:10%;
+
+}
+
+.con56{
+  width:100%;
+  height:490px;
+  overflow-y:scroll;
+  overflow-x:hidden;
+  z-index:1000;
+}
+.con56::-webkit-scrollbar{
+  display:none;
+}
+#table17{
+  z-index:999;
+}
+
+
+.Td12{
+  border:black 1px solid;
+  border-radius:15px;
+  /* position:relative; */
+  min-height:50px;
+  overflow-y:scroll;
+  bottom:5px;
+  margin:5px;
+  padding-left:10px;
+}
+.Td12::-webkit-scrollbar{
+  display:none;
+}
+.Td12 a{
+  color:white;
+  text-decoration:none;
+}
+.Td12 h5{
+  /* position:absolute; */
+  left:10px;
+  width:90%;
+  padding-top:1px;
+  padding-bottom:5px;
+}
+.Td12 h6{
+  display:inline-block;
+  padding-bottom:0px;
+  font-weight:900;
+  /* position:absolute; */
+  /* right:10px;
+  top:0px; */
+}
+.Td12 small{
+    display:inline-block;
+    padding-top:0px;
+    margin-left:80%;
+    /* background:red; */
+  /* position:absolute; */
+  /* right:10px;
+  bottom:0; */
+}
+
+#button30{
+  display:inline-block;
+  margin-top:5px;
+  margin-left:80%;
+}
+.modal{
+  z-index:120120120;
+  color:black;
+}
+
+@media (max-width: 575.98px) {
+  #con21,#con20{
+    margin-left:0;
+  }
+    body{
+      overflow-y:scroll;
+    }
+    body::-webkit-scrollbar{
+      display:none;
+    }
+    #form12{
+      width:150%;
+    }
+    #th12{
+      height:120px;
+      overflow:scroll;
+    }
+    #th12::-webkit-scrollbar{
+      display:none;
+    }
+    #th12 h2{
+      top:-50px;
+    }
+    #button28,#button29{
+      top:70px;
+    }
+    #button32,#button35,#button36{
+      top:70px;
+    }
+}
+</style>
+
+{% block group_list %}
+
+{% endblock %}
+    {% if user.is_authenticated %}
+          <div class="col-xl-8">
+
+              <div class="container" id="con21">
+
+      {% if group_details.name == none %}
+                <table class="table table-hover" id="table16">
+                  <thead id="thead2" class="thead-dark">
+                      <th><h2>Welcome {{user.username}} To WhatsBook!!!</h2></th>
+                  </thead>
+                </table>
+      {%else%}
+                <table class="table table-hover" id="table16">
+                  <thead class="thead-dark" id="thead2">
+
+                      <th id="th12">
+                        <img id="img1" src='{{ group_details.dp.url }}' alt="">
+                        <h2>  {{group_details.name}}</h2>
+
+                            <button data-toggle="collapse" type="button" name="button" class="btn btn-primary btn-lg" id="Menu" data-target="#demo">
+                              <i class="fa fa-bars fa3 "></i></button>
+                                  {% if user.username == group_details.owner %}
+                                  <div id="demo" class="collapse collapse-inline">
+                                      <a href="{% url 'groups:group_members' pk=group_details.pk %}">
+                                           <button id="button35" type="button" data-toggle="tooltip" data-placement="bottom" title="Edit Details" class="btn btn-success navbar-btn btn-lg">
+                                           <i class="fa fa-users fa3"></i> </button>
+                                       </a>
+                                      <form id="form34" action="{% url 'contacts:user_list' %}" method='POST'>
+                                        {% csrf_token %}
+                                        <input type="hidden" name="groups_pk" value={{group_details.pk}}>
+                                           <button id="button32" type="submit" data-toggle="tooltip" data-placement="bottom" title="Delete" class="btn btn-primary navbar-btn btn-lg">
+                                           <i class="fa fa-plus fa3"></i>/<i class="fa fa-times fa3"></i> </button>
+                                       </form>
+                                       <a href="{% url 'groups:group_delete' pk=group_details.pk %}">
+                                            <button id="button29" type="button" data-toggle="tooltip" data-placement="bottom" title="Delete" class="btn btn-danger navbar-btn btn-lg">
+                                            <i class="fa fa-trash fa3"></i> </button>
+                                        </a>
+                                        <a href="{% url 'groups:group_update' pk=group_details.pk %}">
+                                             <button id="button28" type="button" data-toggle="tooltip" data-placement="bottom" title="Edit Details" class="btn btn-success navbar-btn btn-lg">
+                                             <i class="fa fa-pencil fa3"></i> </button>
+                                         </a>
+                                    </div>
+                                   {% else %}
+                                        {% if user in group_details.members.all %}
+                                        <div id="demo" class="collapse">
+                                          <form action="{% url 'groups:remove_member' %}" method="POST">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="group_pk" value={{group_details.pk}}>
+                                                <button id="button29" type="submit" data-toggle="tooltip" data-placement="bottom" title="Delete" class="btn btn-danger navbar-btn btn-lg">
+                                                <i class="fa fa-times fa3"></i> </button>
+                                            </form>
+                                            <a href="{% url 'groups:group_update' pk=group_details.pk %}">
+                                                 <button id="button28" type="button" data-toggle="tooltip" data-placement="bottom" title="Edit Details" class="btn btn-success navbar-btn btn-lg">
+                                                 <i class="fa fa-pencil fa3"></i> </button>
+                                             </a>
+                                             <a href="{% url 'groups:group_members' pk=group_details.pk %}">
+                                                  <button id="button36" type="button" data-toggle="tooltip" data-placement="bottom" title="Edit Details" class="btn btn-success navbar-btn btn-lg">
+                                                  <i class="fa fa-users fa3"></i> </button>
+                                              </a>
+                                        </div>
+                                        {% endif %}
+                                    {% endif %}
+
+
+                      </th>
+                  </thead>
+                </table>
+                <div class="con56" id='con56'>
+                  {% if user in group_details.members.all or user.username == group_details.owner %}
+                      {% if group_details.posts.count == 0 %}
+
+                          <table class="table table-hover table-dark" >
+                              <tr>
+                                <td align="center">No posts in this group yet!</td>
+                              </tr>
+                          </table>
+                          {% else %}
+
+                                {% for post in group_details.posts.all %}
+                                <div class="modal fade" id="delete">
+                                  <div class="modal-dialog">
+                                      <div class="modal-content">
+
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                          <h4 class="modal-title">Are You Sure U want to delete this?</h4>
+                                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                          <form action="{% url 'posts:post_delete' id=post.pk %}" method="POST">
+                                            {% csrf_token %}
+                                              <input type="hidden" name="post_name" id="bookId" value="">
+                                              <input type="hidden" name="group" value={{group_details.pk}}>
+                                               <button type="submit" data-toggle="tooltip" data-placement="bottom" title="Delete" class="btn btn-danger navbar-btn btn-sm">
+                                               <i class="fa fa-trash fa3"></i>Delete</button>
+                                           </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                                        </div>
+
+                                     </div>
+                                  </div>
+                                </div>
+                                  <div  class="Td12">
+                                        {% if post.user.username == user.username %}
+                                                <a href="{% url 'accounts:profile' %}"><h6>You</h6></a>
+                                        {% else %}
+                                              <a href="{% url 'accounts:user_profile' pk=post.user.pk %}"><h6>{{ post.user.username }}</h6></a>
+                                        {% endif %}
+                                          <button id="button30" type="button" data-toggle="modal" data-target="#delete" title="Delete" data-id={{post.pk}} class="btn btn-danger navbar-btn btn-sm button30">
+                                               <i class="fa fa-trash fa3"></i> </button>
+                                          <h5>{{post}}</h5>
+                                          <small>{{post.created_at}}</small>
+                                    </div>
+                                {% endfor %}
+                          {% endif %}
+
+                      </div>
+
+                      <div class="container" id="con55">
+                        <form class="form-group" action="{% url 'posts:post_create'  %}" id="form20" method="POST">
+                          {% csrf_token %}
+
+                              <textarea name="message" class="form-control" rows="8" cols="80"></textarea>
+                              <input type="hidden" name="group" value={{group_details.pk}}>
+                              <button type="submit" onkeypress=""  name="button" id="button20"  class="btn btn-success navbar-btn btn-sm" ><i class="fa fa-send fa3" aria-hidden="true"></i></button>
+                        </form>
+
+                      </div>
+                {% else %}
+
+                    <table class="table table-hover" id="table17">
+                        <tr>
+                          <td>You are not in this group anymore</td>
+                        </tr>
+                    </table>
+
+                {% endif %}
+              </div>
+
+          </div>
+          {% endif %}
+    {% else %}
+        <h1>Welcome To WhatsBook!!!</h1>
+        <h4>Log in to continue!!</h4>
+        <a href="{% url 'accounts:login' %}" class="nav-item "><button id="button7" type="button" class="btn btn-default navbar-btn btn-lg my-2 my-sm-0">Log In</button></a>
+    {% endif %}
+
+
+
+{% endblock %}
+{% block scriptcontent %}
+<script>
+
+  try {
+    var tablebottom = document.getElementById("con56");
+    tablebottom.scrollTop = tablebottom.scrollHeight;
+  }
+  catch(err) {
+    pass
+  }
+  finally {
+    $('#Menu').click(function(){
+          $('#demo').collapse('toggle')
+    })
+
+  $("#form12").hide()
+  $("#button19").click(function(){
+      $("#form12").show();
+      $("#button17").hide();
+      $("#button18").hide();
+      $("#button19").hide();
+      $("#button12").hide();
+  })
+  $("#button14").click(function(){
+      $("#form12").hide();
+      $("#button17").show();
+      $("#button18").show();
+      $("#button19").show();
+      $("#button12").show();
+      $("#searchin").val('');
+  })
+  $(document).ready(function() {
+
+    $('.button30').click(function () {
+
+      var data_id = '';
+
+      if (typeof $(this).data('id') !== 'undefined') {
+
+        data_id = $(this).data('id');
+      }
+
+      $('#bookId').val(data_id);
+    })
+  })
+  if (document.body.classList.contains("dark-mode")){
+    $("#con21,#con20").css('border-color','white');
+        $(".Td12").css('border-color','white');
+        $(".Td12 a").css('color','white');
+        $("#con55 textarea").css('border','white 1px solid');
+  }
+  else{
+        $(".Td12").css('border-color','black');
+        $(".Td12 a").css('color','black');
+        $("#con55 textarea").css('border','black 1px solid');
+
+  }
+  $('.tabletr').click( function() {
+      window.location = $(this).find('a').attr('href');
+})
+    $(document).ready(function(){
+    $("#searchin").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $(".tabletr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  })
+
+
+
+
+
+
+
+
+}
+  </script>
+
+
+{% endblock %}

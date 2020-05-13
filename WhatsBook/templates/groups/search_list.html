@@ -1,0 +1,85 @@
+{% extends 'groups/group_base.html' %}
+
+{% block group_list %}
+
+<style>
+
+#con20, #con21{
+  height:100%;
+}
+#button12{
+  margin-left:10px;
+  top:10px;
+  opacity:1;
+  padding-top:10px;
+}
+</style>
+    {% if user.is_authenticated %}
+
+        <div class="row">
+          <div class="col-xl-4">
+              <div class="container full-height" id="con20">
+                  <table class="table table-hover" id="table15">
+                    <thead class="" id="thead1">
+                      <th>
+                        <div class="row">
+
+                          <div class="col-xl-2 col-xs-3">
+                            <a href="{% url 'groups:group_list' %}">
+                              <button type="button" id="button12" class="btn btn-success btn-lg">
+                                <i class="fa fa-arrow-left fa3"></i></button>
+                            </a>
+                          </div>
+
+                          <div class="col-xl-5 col-xs-3">
+                            <a href="{% url 'accounts:profile' %}">
+                                 <button id="button17" type="button" class="btn btn-success navbar-btn btn-lg">
+                                 <i class="fa fa-user fa3"></i> </button>
+                             </a>
+                          </div>
+
+                          <div class="col-xl-3 col-xs-3">
+                            <a href="{% url 'groups:create_group' %}">
+                                 <button id="button18" type="button" class="btn btn-success btn-lg">
+                                 <i class="fa fa-plus fa3"></i> </button>
+                             </a>
+                          </div>
+
+                          <div class="col-xl-2 col-xs-3">
+
+                                 <button id="button19" type="button" class="btn btn-success btn-lg">
+                                 <i class="fa fa-search fa3" aria-hidden="true"></i> </button>
+
+                          </div>
+
+
+                        </div>
+                        <form class="form-group" action="{% url 'groups:search_list' %}" id="form12" method="POST">
+                          {% csrf_token %}
+                              <input id="searchin" class="form-control" type="text" name="search" placeholder="Search">
+                              <button type="submit"  name="button" id="button13"  class="btn btn-success navbar-btn btn-sm" ><i class="fa fa-search fa3" aria-hidden="true"></i></button>
+                              <button type="button"  name="button" id="button14"  class="btn btn-success navbar-btn btn-sm" ><i class="fa fa-times-circle fa3" aria-hidden="true"></i></button>
+                        </form>
+                      </th>
+                    </thead>
+                    {% for message in messages %}
+                    <tr>
+                      <td>{{message}}</td>
+                    </tr>
+                    {% endfor %}
+                   {% for group in search_lists %}
+                    {% if user in group.members.all or user.username == group.owner %}
+                      <tr class="groupname">
+                        <td id="td1">
+                          <a href="{% url 'groups:group_details' pk=group.pk %}"><img id="img1" src='{{ group.dp.url }}' alt="">  {{group}}</a></td>
+                      </tr>
+                      {% endif %}
+                   {% endfor %}
+
+                  </table>
+
+
+              </div>
+          </div>
+    {% endif %}
+{% endblock %}

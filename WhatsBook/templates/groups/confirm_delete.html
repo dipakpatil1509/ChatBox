@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block links %}
+<link src="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+{% endblock %}
+{% block content %}
+<style>
+.header{
+opacity:0.2;
+  z-index:99999;
+}
+
+.jumbotron{
+  /* text-align:center; */
+  width:50%;
+  margin:auto;
+  opacity:1;
+  color: #00000eeb;
+  box-shadow: 0px 22px 57px 0px rgba(34,41,72,0.5);
+  position:fixed;
+
+}
+#button4,#button1,#button2{
+  background-image:none;
+}
+#button4:hover,#button1:hover,#button2:hover{
+  color:black;
+}
+#button5,#button3{
+  background-image:none;
+}
+#button5:hover,#button3:hover{
+  color:black;
+}
+.jumbotron {
+  position:relative;
+    z-index:100000;
+}
+#button1920{
+  position:absolute;
+  top:0;
+  right:0;
+  text-align:center;
+  border:none;
+}
+.fa3{
+  color:black;
+  fill:black;
+  border:none;
+  font-size:20px;
+}
+@media (max-width: 575.98px) {
+  body{
+    overflow-y:scroll;
+  }
+  .jumbotron{
+    width:100%;
+  }
+}
+</style>
+
+<div class="jumbotron">
+    <button onclick="window.history.back()" value="Cancel"  type="button" id="button1920" class="btn btn-default"><i class="fa fa-times-circle fa3"></i></button>
+
+    <h1 align="center">Confirm Delete {{group.name}}?
+         </h1>
+      <form method="POST">
+      	{% csrf_token %}
+      	<input type="submit" id="button9" value="Delete" class="btn btn-danger btn-large">
+        <button type="button" onclick="window.history.back()" id="button9" value="Cancel" class="btn btn-secondary btn-large">Cancel</button>
+      </form>
+
+</div>
+
+{% endblock %}
+
+{% block scriptcontent %}
+<script>
+  $("#button4").attr('disabled', true)
+  $("#button1").attr('disabled', true)
+  $(".button2").attr('disabled', true)
+  $("#button5").attr('disabled', true)
+  $("#button3").attr('disabled', true)
+  $(".nav-item").attr('disabled', true)
+</script>
+
+{% endblock %}

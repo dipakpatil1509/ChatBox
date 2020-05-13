@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block links %}
+<link src="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+{% endblock %}
+{% block content %}
+<style>
+.header{
+opacity:0.2;
+  z-index:99999;
+}
+.jumbotron{
+  /* text-align:center; */
+  width:50%;
+  margin:auto;
+  opacity:1;
+  color: #00000eeb;
+  box-shadow: 0px 22px 57px 0px rgba(34,41,72,0.5);
+  position:fixed;
+}
+#button4,#button1,#button2{
+  background-image:none;
+}
+#button4:hover,#button1:hover,#button2:hover{
+  color:black;
+}
+#button5,#button3{
+  background-image:none;
+}
+#button5:hover,#button3:hover{
+  color:black;
+}
+.jumbotron {
+  position:relative;
+  z-index:100000;
+}
+
+.jumbotron h1{
+  font-weight:900;
+  margin:0 auto;
+  margin-top:-30px;
+  margin-bottom:10px;
+  display:inline-block;
+}
+.jumbotron h5{
+  margin-left:20%;
+  display:inline-block;
+}
+.jumbotron li{
+  margin-left:0px;
+}
+.jumbotron ol{
+  margin:10px;
+  margin-top:20px;
+  font-size:20px;
+}
+.jumbotron li{
+  margin-top:10px;
+
+}
+#button12{
+  position:absolute;
+  top:0;
+  right:0;
+  text-align:center;
+  border:none;
+}
+.fa3{
+  color:black;
+  fill:black;
+  border:none;
+  font-size:20px;
+}
+li a{
+  color:black;
+  text-decoration:none;
+}
+li a:hover{
+  color:black;
+  text-decoration:none;
+}
+li small{
+  font-size:20px;
+  font-weight:bolder;
+}
+</style>
+
+<div class="jumbotron">
+    <button type="button" id="button12" onclick="window.history.back()" class="btn btn-default"><i class="fa fa-times-circle fa3"></i></button>
+
+    <h1>{{group_members}}</h1>
+    <h5>Members:- <strong>{{group_members.members.count}}</strong></h5>
+    <ol>
+      {% for participant in group_members.members.all %}
+          <li>
+            {% if participant.username == group_members.owner %}
+                <a href="{% url 'accounts:profile' %}"><small>{{participant}} (Admin)</small></a>
+            {% else %}
+                <a href="{% url 'accounts:user_profile' pk=participant.pk %}"><small>{{participant}}</small></a>
+            {% endif %}
+          </li>
+      {% endfor %}
+    </ol>
+
+
+</div>
+
+{% endblock %}
+
+{% block scriptcontent %}
+<script>
+  $("#button4").attr('disabled', true)
+  $("#button1").attr('disabled', true)
+  $(".button2").attr('disabled', true)
+  $("#button5").attr('disabled', true)
+  $("#button3").attr('disabled', true)
+
+</script>
+
+{% endblock %}
