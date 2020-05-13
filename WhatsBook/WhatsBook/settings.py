@@ -24,7 +24,7 @@ Template = os.path.join(BASE_DIR,'templates')
 SECRET_KEY = '8yv2^x1t1+bmr!41p7%x3vgk2y2ej$rwgxpp70b)k3)j=z=_=n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
