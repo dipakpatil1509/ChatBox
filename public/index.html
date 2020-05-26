@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Cafe</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <link rel="stylesheet" href="css/cafe.css">
+
+  </head>
+  <body>
+    <div id="container" align="center">
+      <div class="container" id="container1">
+        <nav class="navbar navbar-expand-lg" role="navigation" align="left">
+          <div class="navbar-header">
+                  <a class="navbar-brand" id="a1" href="#">Cafe</a>
+          </div>
+          <div class="navbar-header">
+                <button class="custom-toggler navbar-toggler navbar-right" type="button" data-toggle="collapse" data-target="#Itemlist" aria-controls="Itemlist" aria-expanded="false" aria-label="Toggle navigation" align="center">
+                      <i class="fa fa-bars fa1"></i>
+                </button>
+          </div>
+          <div class="collapse navbar-collapse"id="Itemlist">
+            <ul class="navbar-nav mr-auto navbar-right">
+                <li class="nav-item login"  style="display:none;"><a href="#" class="nav-link modal-trigger" data-target="modal-account">Profile</a></li>
+                <li class="nav-item login"  style="display:none;"><a href="rating.html" class="nav-link">Rating</a></li>
+                <li class="nav-item logout"  style="display:none;"><a href="#" class="nav-link modal-trigger" data-target="modal-login" >Login</a></li>
+                <li class="nav-item logout"  style="display:none;"><a href="#" class="modal-trigger" data-target="modal-signup">
+                  <button type="button" id="button1" class="btn navbar-btn btn-sm" name="button">Sign Up</button>
+                </a></li>
+                <li class="nav-item login"  style="display:none;"><a href="#" id="logout">
+                  <button type="button" id="button2" class="btn navbar-btn btn-sm" name="button">Log Out</button>
+                </a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <!-- ADMIN ACTIONS -->
+    <form class="center-align admin-actions admin" style="display:none; color:white;margin: 40px auto;margin-top:140px; max-width: 300px;">
+      <input type="email" placeholder="User email" id="admin-email" required />
+      <button type='submit' class="btn-small yellow darken-2 z-depth-0">Make admin</button>
+    </form>
+
+    <div id="modal-signup" class="modal">
+    <div class="modal-content">
+      <h4>Sign up</h4><br />
+      <form id="signup-form">
+        <div class="input-field">
+          <input type="email" id="signup-email" required />
+          <label for="signup-email">Email address</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="signup-password" required />
+          <label for="signup-password">Choose password</label>
+        </div>
+        <div class="input-field">
+          <input type="text" id="signup-fullname" required />
+          <label for="signup-password">Full Name</label>
+        </div>
+        <div class="input-field">
+          <input type="text" id="signup-age" required />
+          <label for="signup-password">Age</label>
+        </div>
+        <button type="submit" class="btn yellow darken-2 z-depth-0">Sign up</button>
+        <button id="googlesignup" type="button" class="btn yellow darken-2 z-depth-0">Sign up With Google</button>
+        <p class="error red-text"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- LOGIN MODAL -->
+  <div id="modal-login" class="modal">
+    <div class="modal-content">
+      <h4>Login</h4><br />
+      <form id="login-form">
+        <div class="input-field">
+          <input type="email" id="login-email" required />
+          <label for="login-email">Email address</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="login-password" required />
+          <label for="login-password">Your password</label>
+        </div>
+        <button class="btn yellow darken-2 z-depth-0">Login</button>
+        <button id="googlelogin" type="button" class="btn yellow darken-2 z-depth-0">Log in With Google</button>
+        <p class="error red-text"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ACCOUNT MODAL -->
+  <div id="modal-account" class="modal"  style="color:black;">
+    <div class="modal-content center-align">
+      <h4>Account details</h4><br />
+      <div class="account-details" style="color:black;"></div>
+    </div>
+  </div>
+
+  <div id="Starter" style="visibility:hidden;">
+    <h1>Cloud Cafe</h1>
+
+      <div class="content">
+ <!-- style="display:none;" -->
+          <form id="add-cafe-form" class="admin">
+            <input type="text" name="name" placeholder="Cafe name">
+            <input type="text" name="city" placeholder="Cafe city">
+            <button>Add Cafe</button>
+          </form>
+
+          <ul id="cafe-list">
+          </ul>
+
+      </div>
+
+  </div>
+
+  </body>
+
+  <script
+  src="https://code.jquery.com/jquery-3.5.0.js"
+  integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc="
+  crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-auth.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-firestore.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-functions.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+  https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-analytics.js"></script>
+
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+          integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="js/cafe.js" charset="utf-8"></script>
+  <script src="js/cafe2.js" charset="utf-8"></script>
+
+</html>

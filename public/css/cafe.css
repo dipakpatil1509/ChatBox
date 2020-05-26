@@ -1,0 +1,212 @@
+body{
+    background: grey;
+    font-family: ubuntu;
+    position: relative;
+    color:white;
+}
+
+#container{
+  width:100%;
+  height: 72px;
+  position: fixed;
+  top:0;
+  background: #fff;
+  z-index: 12;
+}
+#container1{
+  height:70px;
+}
+.navbar{
+  color:black;
+  background:#fff;
+  width:100%;
+}
+.navbar-brand img{
+  width:45px;
+  margin-right: 5px;
+}
+#a1{
+  color:black;
+  font-size: 25px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+}
+#a1:hover{
+  color:black;
+  text-decoration: none;
+}
+.custom-toggler.navbar-toggler{
+    color: black;
+    border: black 1.5px solid;
+    width:35px;
+    height: 35px;
+    outline:none;
+}
+.fa1{
+  width:30px;
+  height:30px;
+  margin-left:-10px;
+}
+
+.nav-item{
+  font-size:20px;
+  margin-left: 15px;
+  letter-spacing: 1px;
+  background: none;
+}
+.nav-link{
+  color:rgba(0,0,0,0.5);
+  font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+}
+.nav-link:hover{
+  color:rgba(0,0,0,1);
+  color:black;
+  text-decoration: none;
+}
+.active .nav-link{
+  color:rgba(0,0,0,1);
+  font-weight: 600;
+}
+#button1{
+  border: lightgreen 2px solid;
+  border-radius: 10px;
+  color:green;
+  height: 45px;
+  font-size:13px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-family: 'Poppins', sans-serif;
+}
+#button1:hover{
+  box-shadow: 0px 0px 3px 1px rgba(34,41,72,0.2);
+}
+#button2{
+  border: lightgreen 2px solid;
+  border-radius: 10px;
+  color:green;
+  height: 45px;
+  font-size:13px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-family: 'Poppins', sans-serif;
+}
+#button2:hover{
+  box-shadow: 0px 0px 3px 1px rgba(34,41,72,0.2);
+}
+
+#starter{
+  text-align:center;
+  color:white;
+}
+
+h1{
+    color: #fff;
+    font-size: 64px;
+    letter-spacing: 2px;
+    margin-top: 80px;
+    text-align: center;
+}
+
+.content{
+    background: #fff;
+    max-width: 960px;
+    margin: 30px auto;
+    padding:  20px 30px;
+    border-radius: 10px 60px 10px 60px;
+    box-shadow: 1px 3px 5px rgba(0,0,0,0.1)
+}
+
+.content ul{
+    list-style-type: none;
+    padding: 0;
+}
+
+.content li{
+    padding: 10px;
+    background: #f6f6f6;
+    font-size: 20px;
+    color: #555;
+    position: relative;
+    border-bottom: 1px solid #e6e6e6;
+    height: 46px;
+}
+
+.content li:nth-child(even){
+    background: #f2f2f2;
+}
+
+.content li span{
+    display: inline-block;
+}
+
+.content li span:nth-child(2){
+    font-size: 16px;
+    margin-top: 6px;
+    position: absolute;
+    left:40%;
+    color: #999;
+}
+
+.content li div{
+    color:black;
+    position: absolute;
+    top: 0;
+    right: 0px;
+    background: rgba(255,255,255,0.6);
+    width: 40px;
+    text-align: center;
+    padding: 10px 0;
+    font-weight:  bold;
+    cursor:  pointer;
+}
+.content li div:nth-last-child(2){
+  position: absolute;
+  top: 0;
+  right: 40px;
+  background: rgba(255,255,255,0.6);
+  width: 40px;
+  text-align: center;
+  padding: 10px 0;
+  font-weight:  bold;
+  cursor:  pointer;
+}
+.content form input{
+    float: left;
+    width: 38%;
+    margin: 0;
+    border: 0;
+    border-bottom: 1px solid #eee;
+    margin: 0 1%;
+    padding: 10px;
+    display: block;
+    box-sizing: border-box;
+    font-size: 18px;
+}
+
+ .content form input:focus{
+    outline: none;
+    border-bottom: 3px solid #88236f;
+    padding-bottom: 8px;
+    transition: all ease 0.2s;
+}
+
+.content form:after{
+    content: '';
+    clear: both;
+    display: block;
+}
+
+#add-cafe-form button{
+    border: 0;
+    background: #fff;
+    border-radius: 10px;
+    padding: 13px;
+    width: 14%;
+    box-shadow: -1px 0px 1px rgba(0,0,0,0.1);
+    font-weight: bold;
+    font-family: ubuntu;
+    letter-spacing: 1px;
+    color: #999;
+}
